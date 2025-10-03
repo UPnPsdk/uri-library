@@ -392,7 +392,7 @@ private:
     std::string::const_iterator scheme_end = scheme_start;
     while ((scheme_end != uri_text.end()) && (*scheme_end != ':'))
     {
-      if (!(std::isalnum(*scheme_end) || (*scheme_end == '-')
+      if (!(std::isalnum(static_cast<unsigned char>(*scheme_end)) || (*scheme_end == '-')
 	    || (*scheme_end == '+') || (*scheme_end == '.')))
       {
 	throw std::invalid_argument("Invalid character found in the scheme component. Supplied URI was: \""
@@ -568,7 +568,7 @@ private:
     std::string::const_iterator port_end = port_start;
     while ((port_end != content.end()) && (*port_end != '/'))
     {
-      if (!std::isdigit(*port_end))
+      if (!std::isdigit(static_cast<unsigned char>(*port_end)))
       {
 	throw std::invalid_argument("Invalid character while parsing the port. "
 				    "Supplied URI was: \"" + uri_text + "\".");
