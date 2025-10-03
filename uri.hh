@@ -413,6 +413,12 @@ private:
 				  + uri_text + "\".");
     }
 
+    if (!std::isalpha(static_cast<unsigned char>(*scheme_start)))
+    {
+      throw std::invalid_argument("First character of the scheme component must be alpha. Supplied URI was: \""
+				    + uri_text + "\".");
+    }
+
     m_scheme = std::string(scheme_start, scheme_end);
     return scheme_end;
   };
